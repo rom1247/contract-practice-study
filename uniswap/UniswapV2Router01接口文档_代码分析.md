@@ -118,24 +118,6 @@ function addLiquidityETH(
     - 由 Pair 执行 `mint(to)`：按当前储备与贡献计算 LP 并发送给 `to`
     - 退款机制：若 `msg.value > amountETH`，多余的 ETH 原路退回调用者，避免多付
       $$\text{refund} = \max(0,\ \text{msg.value} - amountETH)$$
-  - 数学推导（与 `_addLiquidity` 一致，仅将 B 侧替换为 WETH）：
-    - 储备比例：
-      $$R_{\text{token}},\ R_{\text{WETH}},\quad R_{\text{token}}:R_{\text{WETH}}$$
-    - 最优配比：
-      $$\mathrm{token}^{*} = \frac{\mathrm{WETH}_{\text{desired}} \cdot R_{\text{token}}}{R_{\text{WETH}}}$$
-    - 条件选择：
-      $$\begin{cases}
-      (\mathrm{token}_{\text{desired}},\ \mathrm{WETH}^{*}), & \mathrm{WETH}^{*} \le \mathrm{WETH}_{\text{desired}} \\\\
-      (\mathrm{token}^{*},\ \mathrm{WETH}_{\text{desired}}), & \text{otherwise}
-      \end{cases}$$
-    - 滑点保护：
-      $$\mathrm{token} \ge \mathrm{token}_{\min},\ \mathrm{WETH} \ge \mathrm{ETH}_{\min}$$
-  - 变量说明:
-    - `R_token`/`R_WETH`: `token/WETH` 交易对的当前储备
-    - `token_desired`/`WETH_desired`: 用户希望存入的 `token/ETH` 数量
-    - `token_min`/`ETH_min`: 最小可接受数量（滑点保护）
-    - `amountToken`/`amountETH`: 实际采用的两侧存入数量（来自最优匹配与最小值校验）
-    - `refund`: 多余 ETH 退款数量
 
 ### removeLiquidity
 
