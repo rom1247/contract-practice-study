@@ -123,17 +123,17 @@ function addLiquidityETH(
       $$R_{\text{token}},\ R_{\text{WETH}},\quad R_{\text{token}}:R_{\text{WETH}}$$
     - 最优配比：
       $$
-      \mathrm{token}^{*} = \frac{\mathrm{WETH}_{\text{desired}} \cdot R_{\text{token}}}{R_{\text{WETH}}}$$
+      \mathrm{token}^{*} = \frac{\mathrm{WETH}_{\text{desired}} \cdot R_{\text{token}}}{R_{\text{WETH}}}
       $$
     - 条件选择：
       $$
       \begin{cases}
       (\mathrm{token}_{\text{desired}},\ \mathrm{WETH}^{*}), & \mathrm{WETH}^{*} \le \mathrm{WETH}_{\text{desired}} \\\\
       (\mathrm{token}^{*},\ \mathrm{WETH}_{\text{desired}}), & \text{otherwise}
-      \end{cases}$$
+      \end{cases}
       $$
     - 滑点保护：
-      $$\mathrm{token} \ge \mathrm{token}_{\min},\ \mathrm{WETH} \ge \mathrm{ETH}_{\min}$$
+      $$\mathrm{token} \ge \mathrm{token}_{\min},\ \mathrm{WETH} \ge \mathrm{ETH}_{\min}
   - 变量说明:
     - `R_token`/`R_WETH`: `token/WETH` 交易对的当前储备
     - `token_desired`/`WETH_desired`: 用户希望存入的 `token/ETH` 数量
@@ -504,7 +504,7 @@ function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) public pur
     $$(x + \Delta x_{\text{eff}})(y - \Delta y) = x \cdot y$$
   - 解得输出：
     $$
-    = \frac{amountIn \cdot 997 \cdot reserveOut}{reserveIn \cdot 1000 + amountIn \cdot 997}$$
+    = \frac{amountIn \cdot 997 \cdot reserveOut}{reserveIn \cdot 1000 + amountIn \cdot 997}
     $$
 - 变量说明:
   - `x`/`reserveIn`: 交易对中输入代币侧的当前储备
@@ -618,10 +618,9 @@ function _addLiquidity(
 - 当前储备与价格比：
   $$R_A, R_B,\quad R_A:R_B$$
 - 期望的最优配比为
-  $$
-  A^{*} = \frac{B_{\text{desired}} \cdot R_A}{R_B}
-  $$
-- 滑点保护要求：$$A \ge A_{\min},\ B \ge B_{\min}$$
+  $$A^{*} = \frac{B_{\text{desired}} \cdot R_A}{R_B}$$
+- 滑点保护要求：
+  $$A \ge A_{\min},\ B \ge B_{\min}$$
 - 变量说明:
   - `R_A`/`R_B`: 交易对中 A/B 代币当前储备
   - `A_desired`/`B_desired`: 用户期望存入的 A/B 数量
